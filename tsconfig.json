@@ -8,18 +8,20 @@
     "resolveJsonModule": true,
     "moduleDetection": "force",
     "isolatedModules": true,
-    "verbatimModuleSyntax": true,
     /* Strictness */
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
+    "moduleResolution": "NodeNext",
     /* If transpiling with TypeScript: */
-    "module": "NodeNext",
+    "module": "ESNext",
     "outDir": "dist",
     "sourceMap": true,
     "declarationMap": true,
     "noEmit": true,
     /* If your code doesn't run in the DOM: */
     "lib": ["es2022"]
-  }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }

@@ -14,11 +14,13 @@
     "axios": "^1.7.2",
     "csv-parser": "^3.0.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
     "@types/node": "^20.12.12",
+    "@types/yup": "^0.32.0",
     "prettier": "^3.2.5"
   }
 }
