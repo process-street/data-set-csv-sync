@@ -12,7 +12,7 @@
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "node",
     /* If transpiling with TypeScript: */
     "module": "ESNext",
     "outDir": "dist",

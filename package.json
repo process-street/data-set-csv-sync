@@ -4,16 +4,18 @@
   "description": "A script to synchronize a CSV with an existing data set in Process Street.",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node src/sync.ts",
+    "start": "tsx src/sync.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "Cameron McKay <cameron@process.st>",
   "license": "MIT",
+  "type": "module",
   "dependencies": {
     "axios": "^1.7.2",
     "csv-parser": "^3.0.0",
-    "ts-node": "^10.9.2",
+    "dotenv": "^16.4.5",
+    "tsx": "^4.11.0",
     "typescript": "^5.4.5",
     "yup": "^1.4.0"
   },
