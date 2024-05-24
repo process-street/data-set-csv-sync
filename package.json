@@ -1,0 +1,24 @@
+{
+  "name": "data-set-csv-sync",
+  "version": "1.0.0",
+  "description": "A script to synchronize a CSV with an existing data set in Process Street.",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node src/sync.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Cameron McKay <cameron@process.st>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.7.2",
+    "csv-parser": "^3.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/node": "^20.12.12",
+    "prettier": "^3.2.5"
+  }
+}
