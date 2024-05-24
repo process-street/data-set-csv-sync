@@ -19,13 +19,13 @@ cp .env.example .env
 ## Usage
 
 ```shell
-npm start -- <dataSetId> <csvPath>
+npm start -- <dataSetId> <csvPath> <indexColumn>
 ```
 
 For example:
 
 ```shell
-npm start -- jximA08020M34hrr8fZGsQ sample-data/updated_employee_data.csv
+npm start -- jximA08020M34hrr8fZGsQ sample-data/updated_employee_data.csv EmpCode
 ```
 
 Then it will synchronize the data set with the CSV file.
