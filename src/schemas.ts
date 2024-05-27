@@ -1,6 +1,21 @@
 import * as yup from 'yup';
 import { InferType } from 'yup';
 
+export const dataSetFieldSchema = yup.object().shape({
+  id: yup.string().required(),
+  name: yup.string().required(),
+});
+
+export type DataSetField = InferType<typeof dataSetFieldSchema>;
+
+export const dataSetSchema = yup.object().shape({
+  id: yup.string().required(),
+  name: yup.string().required(),
+  fields: yup.array().of(dataSetFieldSchema).required(),
+});
+
+export type DataSet = InferType<typeof dataSetSchema>;
+
 export const cellSchema = yup.object().shape({
   fieldId: yup.string().required(),
   value: yup.string().required(),
@@ -8,12 +23,12 @@ export const cellSchema = yup.object().shape({
 
 export type Cell = InferType<typeof cellSchema>;
 
-export const recordSchema = yup.object().shape({
+export const dataSetRecordSchema = yup.object().shape({
   id: yup.string().required(),
   cells: yup.array().of(cellSchema).required(),
 });
 
-export type Record = InferType<typeof recordSchema>;
+export type DataSetRecord = InferType<typeof dataSetRecordSchema>;
 
 export const linkSchema = yup.object().shape({
   name: yup.string().required(),
@@ -23,8 +38,21 @@ export const linkSchema = yup.object().shape({
 
 export type Link = InferType<typeof linkSchema>;
 
+export const listDataSetsResponseSchema = yup.object().shape({
+  dataSets: yup.array().of(dataSetSchema).required(),
+  links: yup.array().of(linkSchema).required(),
+});
+
+export type ListDataSetsResponse = InferType<typeof listDataSetsResponseSchema>;
+
+export const createDataSetRecordResponseSchema = yup.object().shape({
+  id: yup.string().required(),
+});
+
+export type CreateDataSetRecordResponse = InferType<typeof createDataSetRecordResponseSchema>;
+
 export const listDataSetRecordsResponseSchema = yup.object().shape({
-  records: yup.array().of(recordSchema).required(),
+  records: yup.array().of(dataSetRecordSchema).required(),
   links: yup.array().of(linkSchema).required(),
 });
 
