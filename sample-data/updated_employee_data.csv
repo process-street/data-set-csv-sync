@@ -7,7 +7,6 @@ EmpCode,First Name,Last Name,Department,Salary
 6874,David,Wilson,Marketing,108627
 7744,David,Moore,Operations,85663
 4468,John,Moore,Marketing,43912
-1705,Sophia,Wilson,Sales,90586
 3599,Sarah,Jones,Sales,94546
 3222,Emily,Moore,R&D,61752
 8768,Sarah,Jones,Sales,51922
@@ -29,7 +28,6 @@ EmpCode,First Name,Last Name,Department,Salary
 1797,Jane,Brown,HR,53907
 1659,Robert,Brown,Marketing,75489
 4219,Emily,Brown,Operations,92115
-9615,Michael,Johnson,Finance,105219
 8456,Sarah,Miller,Finance,78395
 4337,Jane,Brown,Sales,103366
 3745,Sophia,Brown,Finance,78214
@@ -64,7 +62,6 @@ EmpCode,First Name,Last Name,Department,Salary
 4918,John,Williams,R&D,85790
 2684,David,Smith,IT,86774
 8098,Sophia,Smith,Finance,68651
-3957,John,Moore,Operations,102885
 5469,Robert,Brown,R&D,55997
 9752,David,Miller,Operations,105180
 6795,Michael,Taylor,Finance,114498
@@ -85,7 +82,6 @@ EmpCode,First Name,Last Name,Department,Salary
 6819,Sarah,Jones,Sales,45181
 7521,Sarah,Davis,Finance,83349
 7242,Sophia,Miller,HR,116578
-8742,Michael,Jones,HR,82914
 7738,Laura,Williams,Finance,110744
 3787,Michael,Johnson,IT,99693
 8316,Sarah,Moore,Operations,103720
@@ -100,7 +96,6 @@ EmpCode,First Name,Last Name,Department,Salary
 6302,John,Johnson,Marketing,66813
 2152,Sarah,Wilson,Finance,79041
 5966,Sarah,Smith,Finance,94462
-3068,Daniel,Smith,Sales,66703
 7827,Laura,Smith,Marketing,96526
 6604,David,Smith,Operations,64993
 7509,Laura,Smith,Marketing,99268

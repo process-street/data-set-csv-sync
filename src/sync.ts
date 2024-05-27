@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { createDataSetRecord, getDataSet, listDataSetRecords, updateDataSetRecord } from './api';
+import { createDataSetRecord, deleteDataSetRecord, getDataSet, listDataSetRecords, updateDataSetRecord } from './api';
 import axios from 'axios';
 import * as fs from 'fs';
 import csv from 'csv-parser';
@@ -111,3 +111,9 @@ for (const row of csvRows) {
 }
 
 // Finally, we'll delete any rows that are no longer in the CSV file.
+
+const recordIdsToDelete = Object.values(indexToRecordIdLookup).filter(id => !updatedRecordsIds.includes(id));
+for (const recordId of recordIdsToDelete) {
+  console.log(`Deleting record with record ID "${recordId}"...`);
+  await deleteDataSetRecord(dataSetId, recordId);
+}

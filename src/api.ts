@@ -3,6 +3,7 @@ import {
   createDataSetRecordResponseSchema,
   DataSet,
   DataSetRecord,
+  deleteDataSetRecordResponseSchema,
   ListDataSetRecordsResponse,
   listDataSetRecordsResponseSchema,
   ListDataSetsResponse,
@@ -75,4 +76,14 @@ export async function* listDataSetRecords(dataSetId: string): AsyncGenerator<Dat
     yield validatedResponse.records;
     url = validatedResponse.links.find(link => link.name === 'next')?.href;
   }
+}
+
+export async function deleteDataSetRecord(dataSetId: string, recordId: string): Promise<DataSetRecord> {
+  const response = await axios.delete(
+    `${process.env.PROCESS_STREET_API_URL}/data-sets/${dataSetId}/records/${recordId}`,
+    {
+      headers: { 'X-API-KEY': process.env.PROCESS_STREET_API_KEY },
+    },
+  );
+  return await deleteDataSetRecordResponseSchema.validate(response.data);
 }

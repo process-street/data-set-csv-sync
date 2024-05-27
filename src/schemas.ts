@@ -61,3 +61,7 @@ export const listDataSetRecordsResponseSchema = yup.object().shape({
 });
 
 export type ListDataSetRecordsResponse = InferType<typeof listDataSetRecordsResponseSchema>;
+
+export const deleteDataSetRecordResponseSchema = dataSetRecordSchema;
+
+export type DeleteDataSetRecordResponse = InferType<typeof deleteDataSetRecordResponseSchema>;
