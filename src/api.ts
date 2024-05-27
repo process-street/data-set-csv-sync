@@ -1,12 +1,13 @@
 import {
-  listDataSetRecordsResponseSchema,
-  DataSetRecord,
-  ListDataSetRecordsResponse,
   CreateDataSetRecordResponse,
   createDataSetRecordResponseSchema,
+  DataSet,
+  DataSetRecord,
+  ListDataSetRecordsResponse,
+  listDataSetRecordsResponseSchema,
   ListDataSetsResponse,
   listDataSetsResponseSchema,
-  DataSet,
+  updateDataSetRecordResponseSchema,
 } from './schemas';
 import axios from 'axios';
 
@@ -45,6 +46,21 @@ export async function createDataSetRecord(dataSetId: string, cells: DataSetRecor
     response.data,
   );
   return validatedResponse.id;
+}
+
+export async function updateDataSetRecord(
+  dataSetId: string,
+  recordId: string,
+  cells: DataSetRecord['cells'],
+): Promise<DataSetRecord> {
+  const response = await axios.put(
+    `${process.env.PROCESS_STREET_API_URL}/data-sets/${dataSetId}/records/${recordId}`,
+    { cells },
+    {
+      headers: { 'X-API-KEY': process.env.PROCESS_STREET_API_KEY },
+    },
+  );
+  return await updateDataSetRecordResponseSchema.validate(response.data);
 }
 
 export async function* listDataSetRecords(dataSetId: string): AsyncGenerator<DataSetRecord[]> {

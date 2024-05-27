@@ -51,6 +51,10 @@ export const createDataSetRecordResponseSchema = yup.object().shape({
 
 export type CreateDataSetRecordResponse = InferType<typeof createDataSetRecordResponseSchema>;
 
+export const updateDataSetRecordResponseSchema = dataSetRecordSchema;
+
+export type UpdateDataSetRecordResponse = InferType<typeof updateDataSetRecordResponseSchema>;
+
 export const listDataSetRecordsResponseSchema = yup.object().shape({
   records: yup.array().of(dataSetRecordSchema).required(),
   links: yup.array().of(linkSchema).required(),

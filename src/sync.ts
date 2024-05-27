@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { getDataSet, listDataSetRecords } from './api';
+import { createDataSetRecord, getDataSet, listDataSetRecords, updateDataSetRecord } from './api';
 import axios from 'axios';
 import * as fs from 'fs';
 import csv from 'csv-parser';
@@ -67,11 +67,12 @@ console.log(`Fetching records for data set "${dataSetId}"...`);
 try {
   for await (const rs of listDataSetRecords(dataSetId)) {
     for (const r of rs) {
-      const indexCell = r.cells.find(cell => cell.fieldId === indexColumn);
+      const fieldId = csvColumnToFieldIdLookup[indexColumn];
+      const indexCell = r.cells.find(cell => cell.fieldId === fieldId);
       if (indexCell) {
         indexToRecordIdLookup[indexCell.value] = r.id;
       } else {
-        console.error(`The index column "${indexColumn}" does not exist in the data set record "${r.id}"`);
+        console.error(`The field id "${fieldId}" does not exist in the data set record "${r.id}"`);
         process.exit(1);
       }
     }
@@ -95,11 +96,17 @@ for (const row of csvRows) {
     process.exit(1);
   }
   const recordId = indexToRecordIdLookup[indexValue];
+  const cells = dataSet.fields.map(field => ({
+    fieldId: field.id,
+    value: row[field.name] ?? '',
+  }));
   if (recordId) {
     updatedRecordsIds.push(recordId);
     console.log(`Updating record with index value "${indexValue}"...`);
+    await updateDataSetRecord(dataSetId, recordId, cells);
   } else {
     console.log(`Creating record with index value "${indexValue}"...`);
+    await createDataSetRecord(dataSetId, cells);
   }
 }
 
