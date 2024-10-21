@@ -1,6 +1,6 @@
 {
   "name": "data-set-csv-sync",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A script to synchronize a CSV with an existing data set in Process Street.",
   "main": "index.js",
   "scripts": {
