@@ -3,7 +3,7 @@ import { InferType } from 'yup';
 
 export const dataSetFieldSchema = yup.object().shape({
   id: yup.string().required(),
-  name: yup.string().required(),
+  name: yup.string().defined(),
 });
 
 export type DataSetField = InferType<typeof dataSetFieldSchema>;
