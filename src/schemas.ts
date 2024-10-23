@@ -18,7 +18,7 @@ export type DataSet = InferType<typeof dataSetSchema>;
 
 export const cellSchema = yup.object().shape({
   fieldId: yup.string().required(),
-  value: yup.string().required(),
+  value: yup.string().defined(),
 });
 
 export type Cell = InferType<typeof cellSchema>;
