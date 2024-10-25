@@ -1,3 +1,7 @@
+# 1.3.0
+
+- Add support for retrying after being rate limited by the API
+
 # 1.2.0
 
 - Allow cell values to be the empty string in schema

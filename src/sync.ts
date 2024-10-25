@@ -4,6 +4,34 @@ import axios from 'axios';
 import * as fs from 'fs';
 import csv from 'csv-parser';
 import { Command } from 'commander';
+import axiosRetry from 'axios-retry';
+
+// Set up axios retry with custom logic
+axiosRetry(axios, {
+  retries: 3, // Number of retry attempts
+  retryCondition: error => {
+    const response = error.response;
+    const ratedLimited = response?.status === 429; // Retry only on 429 status code
+    if (ratedLimited) {
+      const retryAfter = error.response?.headers['retry-after'];
+      console.warn(`Rate limited, retrying after ${retryAfter}...`);
+    }
+    return ratedLimited;
+  },
+  retryDelay: (retryCount, error) => {
+    const retryAfter = error.response?.headers['retry-after'];
+
+    // Parse `Retry-After` header as either seconds or a date
+    if (retryAfter) {
+      const delay = isNaN(Number(retryAfter))
+        ? new Date(retryAfter).getTime() - new Date().getTime()
+        : Number(retryAfter) * 1000;
+      return delay > 0 ? delay : 1000; // Default to 1s delay if header value is invalid
+    } else {
+      return axiosRetry.exponentialDelay(retryCount); // Fallback to exponential delay if no `Retry-After` header
+    }
+  },
+});
 
 const program = new Command();
 
